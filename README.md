@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LearnElixir
 
 **TODO: Add description**
@@ -19,3 +20,6 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/learn_elixir](https://hexdocs.pm/learn_elixir).
 
+=======
+# learn_elixir
+>>>>>>> 87d6bedb08b0f56b1f631a3320593020a8a831f4

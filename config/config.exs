@@ -15,6 +15,7 @@ use Mix.Config
 # and access this configuration in your application as:
 #
 #     Application.get_env(:learn_elixir, :key)
+
 #
 # You can also configure a third-party app:
 #
