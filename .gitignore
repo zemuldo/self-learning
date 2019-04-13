@@ -1,6 +1,7 @@
 # The directory Mix will write compiled artifacts to.
 /_build/
 .elixir_ls/
+
 # If you run "mix test --cover", coverage assets end up here.
 /cover/
 
@@ -24,5 +25,6 @@ learn_elixir-*.tar
 
 # Ignore identicons
 /identicons
+
 
 
