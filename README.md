@@ -1,2 +1,2 @@
-# Learn_elixir
+# learn_elixir
 
