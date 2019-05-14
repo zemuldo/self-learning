@@ -1,0 +1,28 @@
+{
+  "name": "optimizing_nodejs",
+  "version": "1.0.0",
+  "description": "Web application with good design practices for creating a fast and efficient Nodejs application",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zemuldo/optimizing_nodejs.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "NodejsOptimization",
+    "node"
+  ],
+  "author": "Danstan Otieno Onyango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zemuldo/optimizing_nodejs/issues"
+  },
+  "homepage": "https://github.com/zemuldo/optimizing_nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "winston": "^2.4.2"
+  }
+}
