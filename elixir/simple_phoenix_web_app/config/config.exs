@@ -13,7 +13,7 @@ config :simple_phoenix_web_app,
 # Configures the endpoint
 config :simple_phoenix_web_app, SimplePhoenixWebAppWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "DmvFOnXxXQHy8B3dmgVeKWIskPVP+sECjnIGevvml3XtiY6B6phK9C8n74GlwjuH",
+  secret_key_base: "5rR7AL1yVLCm8aOBlHpxL9Mmd0gv3j66tia218y+TosTt5nKH6D6Ve43KTeT7xw1",
   render_errors: [view: SimplePhoenixWebAppWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: SimplePhoenixWebApp.PubSub, adapter: Phoenix.PubSub.PG2]
 

@@ -68,8 +68,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :simple_phoenix_web_app, SimplePhoenixWebApp.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "zemuldo",
+  password: "",
   database: "simple_phoenix_web_app_dev",
   hostname: "localhost",
   pool_size: 10

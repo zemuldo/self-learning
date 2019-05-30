@@ -40,7 +40,7 @@ defmodule SimplePhoenixWebAppWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_simple_phoenix_web_app_key",
-    signing_salt: "iH2/ypJ7"
+    signing_salt: "m5RtsulZ"
 
   plug SimplePhoenixWebAppWeb.Router
 end
