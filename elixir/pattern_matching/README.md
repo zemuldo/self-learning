@@ -54,7 +54,7 @@ Elixir|iex|13▶
 
 ## Using patter matching
 
-### Map Reduce array into a Map
+### Map Reduce List into a Map
 Check the function named `reduce_list`
 ```
 Elixir|iex|2▶ PatternMatching.reduce_list(["one", "two", "three"], %{})
