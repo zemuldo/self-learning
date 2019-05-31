@@ -15,4 +15,11 @@ defmodule PatternMatching do
   def hello do
     :world
   end
+
+  def reduce_list([], reduced) do reduced end
+
+  def reduce_list([first | rest ], reduced) do
+    reduce_list(rest, Map.put(reduced, first, "Done"))
+  end
+
 end
