@@ -1,0 +1,26 @@
+{
+  "name": "callbacks_promises_async_await",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zemuldo/self-learning.git"
+  },
+  "keywords": [
+    "js",
+    "callbacks",
+    "async",
+    "await",
+    "nodejs"
+  ],
+  "author": "Zemuldo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zemuldo/self-learning/issues"
+  },
+  "homepage": "https://github.com/zemuldo/self-learning#readme"
+}
