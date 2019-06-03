@@ -41,4 +41,8 @@ defmodule PhoenixAppWeb.ErrorHelpers do
       Gettext.dgettext(PhoenixAppWeb.Gettext, "errors", msg, opts)
     end
   end
+
+  def translate_changeset_errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+  end
 end

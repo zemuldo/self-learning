@@ -1,4 +1,4 @@
-#Journey
+# Journey
 ## Initial Setup
 Created app using `mix phx.new phoenix_app`
 
@@ -57,3 +57,62 @@ Migrate again ```mix ecto.mirate```
 - If you run migrations with duplicate emails in DB already you will get an error.
 
 ## Sigup Endpoint
+
+#### Create signup controller at `lib/phoenix_app_web/controllers/signup_controller.ex`
+
+```elixir
+    defmodule PhoenixAppWeb.SignupController do
+        use PhoenixAppWeb, :controller
+        alias PhoenixApp.Accounts
+        alias PhoenixAppWeb.SignupView
+
+        def index(conn, params) do
+            case Accounts.create_user(params) do
+            {:ok, _} ->
+                conn
+                |> render("success.json", message: "ok")
+
+            {:error, changeset} ->
+                conn
+                |> put_status(400)
+                |> render("error.json", changeset: changeset)
+            end
+        end
+    end
+```
+
+#### Create signup view at `lib/phoenix_app_web/controllers/signup_controller.ex`
+
+```elixir
+    defmodule PhoenixAppWeb.SignupView do
+        use PhoenixAppWeb, :view
+        alias PhoenixAppWeb.ErrorHelpers
+
+        def render("success.json", %{message: message}) do
+            %{status: "ok", code: 200, errors: []}
+        end
+
+        def render("error.json",  %{changeset: changeset}) do
+            # When encoded, the changeset returns its errors
+            # as a JSON object. So we just pass it forward.
+            %{status: "fail", errors: translate_changeset_errors(changeset), code: 400}
+        end
+    end
+```
+#### Add changeset helper for converting ecto change sets at `lib/phoenix_app_web/views/error_helpers.ex`
+
+```elixir
+    def translate_changeset_errors(changeset) do
+       Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+    end
+```
+
+#### Add the register route 
+```elixir
+ scope "/", PhoenixAppWeb do
+    pipe_through :browser
+
+    get "/", PageController, :index
+    post "/register", SignupController, :index
+  end
+```
