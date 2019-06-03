@@ -19,6 +19,7 @@ defmodule PhoenixApp.Accounts.User do
     user
     |> cast(attrs, [:first_name, :last_name, :is_active, :email, :password])
     |> validate_required([:first_name, :last_name, :is_active, :email, :password])
+    |> unique_constraint(:email)
     |> put_password_hash()
   end
 
