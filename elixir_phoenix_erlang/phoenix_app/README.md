@@ -117,4 +117,29 @@ Migrate again ```mix ecto.mirate```
   end
 ```
 
-#### Password policy
+## User Authentication
+
+Add guradian and comeon in to packages
+```elixir
+   {:guardian, "~> 1.2"},
+   {:comeonin, "~> 5.0"},
+```
+### Configure Guardian
+To use the JWT token type, we'll need a secret. We'll use the HS512 algorithm which is a simple hashing algorithm. The most basic configuration is very straight forward.
+
+The secret can be any string but it's recommended that you use the generator provided with Guardian for this.
+
+`$ mix guardian.gen.secret`
+
+Add to config.exs
+```elixir
+config :phoenix_app, PhoenixApp.Accounts.Guardian,
+  issuer: "phoenix_app",
+  secret_key: "A+oz7eqTHd8NywYc3Z18idGozqdsjMWrEy2hD1MyrSbAVLqa0gIVt9C/OpPzgTLQ"
+
+```
+
+Add user auth function
+
+
+

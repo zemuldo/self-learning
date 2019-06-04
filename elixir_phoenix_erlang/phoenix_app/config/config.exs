@@ -28,3 +28,7 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :phoenix_app, PhoenixApp.Accounts.Guardian,
+  issuer: "phoenix_app",
+  secret_key: "A+oz7eqTHd8NywYc3Z18idGozqdsjMWrEy2hD1MyrSbAVLqa0gIVt9C/OpPzgTLQ"

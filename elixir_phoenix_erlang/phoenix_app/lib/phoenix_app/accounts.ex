@@ -7,6 +7,7 @@ defmodule PhoenixApp.Accounts do
   alias PhoenixApp.Repo
 
   alias PhoenixApp.Accounts.User
+  alias Bcrypt
 
   @doc """
   Returns the list of users.
@@ -101,4 +102,19 @@ defmodule PhoenixApp.Accounts do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+def authenticate_user(email, plain_text_password) do
+  query = from u in User, where: u.email == ^email
+  case Repo.one(query) do
+    nil ->
+      Bcrypt.no_user_verify()
+      {:error, :invalid_credentials}
+    user ->
+      if Bcrypt.verify_pass(plain_text_password, user.password) do
+        {:ok, user}
+      else
+        {:error, :invalid_credentials}
+      end
+  end
+end
 end
