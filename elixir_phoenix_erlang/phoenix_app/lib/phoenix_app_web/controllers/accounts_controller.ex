@@ -1,7 +1,7 @@
-defmodule PhoenixAppWeb.UsersController do
+defmodule PhoenixAppWeb.AccounstController do
   use PhoenixAppWeb, :controller
   alias PhoenixApp.Accounts
-  alias PhoenixAppWeb.UsersView
+  alias PhoenixAppWeb.AccounstView
 
   def index(conn, params) do
     case Accounts.create_user(params) do
