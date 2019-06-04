@@ -1,4 +1,4 @@
-defmodule PhoenixAppWeb.SignupView do
+defmodule PhoenixAppWeb.UsersView do
   use PhoenixAppWeb, :view
   alias PhoenixAppWeb.ErrorHelpers
 

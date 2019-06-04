@@ -58,13 +58,13 @@ Migrate again ```mix ecto.mirate```
 
 ## Sigup Endpoint
 
-#### Create signup controller at `lib/phoenix_app_web/controllers/signup_controller.ex`
+#### Create signup controller at `lib/phoenix_app_web/controllers/users_controller.ex`
 
 ```elixir
-    defmodule PhoenixAppWeb.SignupController do
+    defmodule PhoenixAppWeb.UsersController do
         use PhoenixAppWeb, :controller
         alias PhoenixApp.Accounts
-        alias PhoenixAppWeb.SignupView
+        alias PhoenixAppWeb.UsersView
 
         def index(conn, params) do
             case Accounts.create_user(params) do
@@ -81,10 +81,10 @@ Migrate again ```mix ecto.mirate```
     end
 ```
 
-#### Create signup view at `lib/phoenix_app_web/controllers/signup_controller.ex`
+#### Create signup view at `lib/phoenix_app_web/controllers/users_controller.ex`
 
 ```elixir
-    defmodule PhoenixAppWeb.SignupView do
+    defmodule PhoenixAppWeb.UsersView do
         use PhoenixAppWeb, :view
         alias PhoenixAppWeb.ErrorHelpers
 
@@ -113,6 +113,6 @@ Migrate again ```mix ecto.mirate```
     pipe_through :browser
 
     get "/", PageController, :index
-    post "/register", SignupController, :index
+    post "/register", AccounstController, :index
   end
 ```
