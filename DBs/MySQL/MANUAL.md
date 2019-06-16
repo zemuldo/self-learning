@@ -53,13 +53,24 @@ mysql>
     - [Commands](#commands)
       - [DESCRIBE](#describe)
       - [SELECT](#select)
-        - [Just SELECT](#just-select)
-        - [SELECT LIMIT](#select-limit)
+      - [DISTINCT, WHERE](#distinct-where)
+      - [ALTER TABLE](#alter-table)
+        - [ALTER ADD Column](#alter-add-column)
+        - [RENAME TO and CHANGE](#rename-to-and-change)
+      - [FUNCTIONS](#functions)
+        - [Sum](#sum)
+        - [DIV / ROUND](#div--round)
+        - [FLOOR](#floor)
+        - [CONCAT, LEFT, RIGHT](#concat-left-right)
+        - [LENGTH](#length)
+        - [REPLACE and REVERSE](#replace-and-reverse)
+        - [DATE FORMAT, DATE TIME](#date-format-date-time)
+      - [INSERT](#insert)
 
 
 Using the database world. The SQL file in the root of this manuals location or just [this link](http://downloads.mysql.com/docs/world.sql.gz).
 
-Most commands are these: Pulled from 
+Most commands are these.
 
 | Description                                                                                                                          	| Command                                                                                                                                                                         |
 |---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -352,16 +363,159 @@ mysql>
 ```
 
 #### SELECT
-##### Just SELECT
-SELECT all columns of all rows FROM table city
+Most Used Command besides [INSERT](#insert). Since most commands are also demonstrated alongside SELECT, I will state uses of each command and just get writing queries. Thats the best way i find to understand such commands: Inside a QUERY. MySQL is not case sensitive so but convention is to use uppercase for commands and lowercase for identifiers like column, table, database names.
+
+SELECT all columns of all rows FROM table city, Its said to be a bad idea to do this. [See Here](https://stackoverflow.com/questions/3639861/why-is-select-considered-harmful)
 ```SQL
 SELECT * FROM city;
 ```
 
-##### SELECT LIMIT
-Select all columns the first n rows from table city
+SELECT desired columns of rows from table city
 ```SQL
-SELECT * FROM city LIMIT 5;
+SELECT id,name,countrycode FROM city;
 ```
-SELECT desred columns of all rows FROM table city
+SELECT with ALIAS: Give a table, or a column in a table, a temporary name.
 
+```sql
+SELECT id as CityID,name as CityName,countrycode as CountryCode FROM city as Cities;
+```
+
+```sql
+SELECT C.id as CityID,C.name as CityName,C.countrycode as CountryCode FROM city C ;
+```
+
+#### DISTINCT, WHERE
+
+DISTINCT Removes duplicate values
+WHERE uses conditions to limit and works with Operators
+=, >, <, >, <>, <=, >=, 
+
+#### ALTER TABLE
+##### ALTER ADD Column
+Add 
+```sql
+ALTER TABLE city
+  ADD column_name INTEGER NOT NULL DEFAULT 10000;
+```
+#####ALTER TABLE DROP Column
+Drop the column name just created and maki it size in square meters
+```sql
+ALTER TABLE city DROP column_name;
+```
+Add it now
+```sql
+ALTER TABLE city
+  ADD size INTEGER NOT NULL DEFAULT 10000;
+```
+##### RENAME TO and CHANGE
+We could also asell just RENAME it or CHANGE it as RENAME TO is nolonger Supported in later versions
+
+CHANGE table takes is better though.
+```sql
+ALTER TABLE city CHANGE size size INTEGER NOT NULL DEFAULT 1000;
+```
+#### FUNCTIONS
+
+##### Sum
+Find Total population of all the cities
+```sql
+SELECT SUM(C.population) FROM city C;
+``` 
+##### DIV / ROUND
+Find the decity of each city, that is population devided by the size.
+```sql
+SELECT
+C.population AS Population,
+C.size AS SqrMeterSize,
+C.population DIV C.size AS Density
+FROM city C 
+ORDER BY population DESC;
+```
+
+DIV returns whole number, while / returns floating points
+```sql
+SELECT
+C.population AS Population,
+C.size AS SqrMeterSize,
+C.population DIV C.size AS Density
+FROM city C 
+ORDER BY population DESC;
+```
+
+ROUND to 2 decimal places
+```SQL
+SELECT
+C.population AS Population,
+C.size AS SqrMeterSize,
+ROUND(C.population / C.size, 2) AS Density
+FROM city C 
+ORDER BY population DESC;
+```
+##### FLOOR
+FLOOR removes floating points
+```sql
+SELECT
+C.population AS Population,
+C.size AS SqrMeterSize,
+ROUND(C.population / C.size, 2) AS Density,
+FLOOR(C.population / C.size) AS DensityFloored
+FROM city C 
+ORDER BY population DESC;
+```
+##### CONCAT, LEFT, RIGHT
+Join strings in Query: CROSS JOIN?
+```sql
+SELECT CONCAT(Ct.name, ' is in ', Cn.name) FROM city Ct, country Cn WHERE Ct.CountryCode = Cn.code;
+```
+
+Get name from `first_name` and `last_name` 
+```sql
+SELECT CONCAT(LEFT(P.first_name, 1), ' ', LEFT(P.last_name, 1)) AS name FROM person P;
+```
+
+LEFT and RIGHT are opposites of each other getting firts and last n characters of a string repectively
+```sql
+SELECT LEFT(Ct.name, 1) FROM city Ct
+```
+```sql
+SELECT RIGHT(Ct.name, 1) FROM city Ct
+```
+
+##### LENGTH
+
+Get LENGTH of strings
+```sql
+SELECT LENGTH(Ct.name) FROM city Ct
+```
+
+##### REPLACE and REVERSE
+
+REPLACE characters in a string
+```sql
+SELECT REPLACE(Ct.name, 's', '$') FROM city Ct
+```
+REVERSE character order
+```SQL
+SELECT REVERSE(Ct.name) FROM city Ct
+```
+
+##### DATE FORMAT, DATE TIME
+```sql
+ALTER TABLE city ADD inserted_at TIMESTAMP NOT NULL DEFAULT NOW();
+```
+FORMAT_DATE formats date to diffrent representations
+```sql
+SELECT 
+C.inserted_at,
+DATE_FORMAT(C.inserted_at, '%m/%d/%y') AS 'Format-d/m/Y',
+DATE_FORMAT(C.inserted_at, '%m-%d-%y') AS 'Format-d/m/Y',
+DATE_FORMAT(C.inserted_at, '%M-%D-%Y') AS 'Format-D/M/Y',
+DATE_FORMAT(C.inserted_at, '%d %b %Y %T:%f') AS 'Format-D Month YYYY TIME'
+FROM city C;
+```
+
+Other functions
+`DAYOFWEEK`, `QUARTER`, `WEEK`, `MONTHNAME`, `GET_FORMAT`
+
+
+#### INSERT
