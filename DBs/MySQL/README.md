@@ -388,7 +388,7 @@ SELECT C.id as CityID,C.name as CityName,C.countrycode as CountryCode FROM city 
 
 DISTINCT Removes duplicate values
 WHERE uses conditions to limit and works with Operators
-=, >, <, >, <>, <=, >=, 
+=, >, <, >, <>, <=, >=, != with OR, AND and NOT
 
 #### ALTER TABLE
 ##### ALTER ADD Column
