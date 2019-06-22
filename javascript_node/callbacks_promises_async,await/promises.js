@@ -64,5 +64,29 @@ function run (){
     
 }
 
+function run_handle_errors (){
+    i_am_first_but_i_take_10_sec()
+    .then(() => {
+        
+        return i_am_second_but_i_take_8_sec()
+    })
+    .then(() => {
+        return i_am_third_but_i_take_6_sec()
+    })
+    .then(() => {
+        return i_am_fourth_but_i_take_4_sec()
+    })
+    .then(() => {
+        return i_am_last_but_i_take_1_sec()
+    })
+    .then(() => {
+        console.log("Done")
+    })
+    .catch((error)=>{
+        console.log(error)
+    });
+    
+}
+
 run()
 
