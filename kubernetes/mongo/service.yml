@@ -1,0 +1,15 @@
+# Headless mongo service
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  labels:
+    name: mongo
+spec:
+  type: NodePort
+  ports:
+  - port: 27017
+    targetPort: 27017
+  selector:
+    role: mongo
+---

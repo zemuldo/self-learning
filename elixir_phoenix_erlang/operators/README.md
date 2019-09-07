@@ -1,21 +1,27 @@
 # Operators
 
-**TODO: Add description**
+## Operators
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `operators` to your list of dependencies in `mix.exs`:
-
+### Basic
+Like any other language, Elixir prvides basic arithmetic operators:
 ```elixir
-def deps do
-  [
-    {:operators, "~> 0.1.0"}
-  ]
-end
+  Elixir|iex|16▶ 3 + 6
+  9
+  Elixir|iex|17▶ 7 * 7
+  49
+  Elixir|iex|18▶ 30 / 7
+  4.285714285714286
+  Elixir|iex|19▶ div 30, 7
+  4
+  Elixir|iex|20▶ rem 30, 7
+  2
+  Elixir|iex|21▶
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/operators](https://hexdocs.pm/operators).
+### String Concat
+```elixir
+  Elixir|iex|21▶ "foo" <> "bar"
+  "foobar"
+  Elixir|iex|22▶ 
+```
 

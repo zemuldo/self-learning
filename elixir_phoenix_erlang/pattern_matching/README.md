@@ -54,10 +54,45 @@ Elixir|iex|13▶
 
 ## Using patter matching
 
-### Map Reduce List into a Map
+### Using with Lists
+Grabbing list items
+```elixir
+Elixir|iex|37▶ [first, second, third | others] = [1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+Elixir|iex|38▶ first
+1
+Elixir|iex|39▶ second
+2
+Elixir|iex|40▶ third
+3
+Elixir|iex|41▶ others
+[4, 5]
+Elixir|iex|42▶
+```
+#### Loop and Transform List into a Map
 Check the function named `reduce_list`
 ```
 Elixir|iex|2▶ PatternMatching.reduce_list(["one", "two", "three"], %{})
 %{"one" => "Done", "three" => "Done", "two" => "Done"}
 Elixir|iex|3▶ 
+```
+
+### Using with Strings
+```elixir
+    Elixir|iex|6▶ "hello" <> rest = "hello world"
+    "hello world"
+    Elixir|iex|7▶ rest
+    " world"
+    Elixir|iex|8▶
+```
+
+
+### Using with maps
+
+```elixir
+    Elixir|iex|10▶ %{name: name} = %{name: "Danstan"}  
+    %{name: "Danstan"}
+    Elixir|iex|11▶ name
+    "Danstan"
+    Elixir|iex|12▶ 
 ```

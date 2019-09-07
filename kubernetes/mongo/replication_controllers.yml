@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: mongo-backup-primary
+  name: mongo-backup-primary
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo-backup-primary
+    spec:
+      containers:
+      - image: tutum/mongodb-backup
+        name: mongodb-backup
+        ports:
+        - name: mongo
+          containerPort: 27017
+          hostPort: 27017
+        env:
+        - name: MAX_BACKUPS
+          value: "15"
+        - name: MONGODB_USER
+          value: "epesi-admin"
+        - name: MONGODB_PASS
+          value: "372b60f4-704c-4205-8e5c-45cdbf44b1fc"
+        - name: MONGODB_HOST
+          value: "mongo-0.mongo.default"
+        - name: MONGODB_PORT
+          value: "27017"
+        volumeMounts:
+            - name: mongo-backup
+              mountPath: /backup
+      volumes:
+        - name: mongo-backup
+          persistentVolumeClaim:
+            claimName: mongo-primary-backup-pvc
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    name: mongo-backup-secondary
+  name: mongo-backup-secondary
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongo-backup-secondary
+    spec:
+      containers:
+      - image: tutum/mongodb-backup
+        name: mongodb-backup
+        ports:
+        - name: mongo
+          containerPort: 27017
+          hostPort: 27017
+        env:
+        - name: MAX_BACKUPS
+          value: "15"
+        - name: MONGODB_USER
+          value: "epesi-admin"
+        - name: MONGODB_PASS
+          value: "372b60f4-704c-4205-8e5c-45cdbf44b1fc"
+        - name: MONGODB_HOST
+          value: "mongo-0.mongo.default"
+        - name: MONGODB_PORT
+          value: "27017"
+        volumeMounts:
+            - name: mongo-backup
+              mountPath: /backup
+      volumes:
+        - name: mongo-backup
+          persistentVolumeClaim:
+            claimName: mongo-secondary-backup-pvc
