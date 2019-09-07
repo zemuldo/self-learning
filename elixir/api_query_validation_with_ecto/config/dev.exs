@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :api_query_val_with_ecto, ApiQueryValWithEctoWeb.Endpoint,
+config :my_app, MyAppWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -46,13 +46,13 @@ config :api_query_val_with_ecto, ApiQueryValWithEctoWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :api_query_val_with_ecto, ApiQueryValWithEctoWeb.Endpoint,
+config :my_app, MyAppWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/api_query_val_with_ecto_web/views/.*(ex)$},
-      ~r{lib/api_query_val_with_ecto_web/templates/.*(eex)$}
+      ~r{lib/my_app_web/views/.*(ex)$},
+      ~r{lib/my_app_web/templates/.*(eex)$}
     ]
   ]
 
@@ -67,9 +67,9 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
-config :api_query_val_with_ecto, ApiQueryValWithEcto.Repo,
+config :my_app, MyApp.Repo,
   username: "postgres",
   password: "postgres",
-  database: "api_query_val_with_ecto_dev",
+  database: "my_app_dev",
   hostname: "localhost",
   pool_size: 10

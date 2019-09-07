@@ -1,4 +1,4 @@
-# ApiQueryValWithEcto
+# MyApp
 
 To start your Phoenix server:
 

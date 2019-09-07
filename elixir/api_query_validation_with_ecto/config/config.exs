@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :api_query_val_with_ecto,
-  ecto_repos: [ApiQueryValWithEcto.Repo]
+config :my_app,
+  ecto_repos: [MyApp.Repo]
 
 # Configures the endpoint
-config :api_query_val_with_ecto, ApiQueryValWithEctoWeb.Endpoint,
+config :my_app, MyAppWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "AWwhRZcXIJaQy88ISAKoX+rAt4c9lZahzmZr8v5PcnTKVG+oMwJDc3b8Tyhv9kSl",
-  render_errors: [view: ApiQueryValWithEctoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ApiQueryValWithEcto.PubSub, adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "LrNW9GvgnmFXvDdk+XtJoEzpwddtOMvZR5EDcD/X3pJ7heYyotQgtkE77qz2qzC1",
+  render_errors: [view: MyAppWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: MyApp.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

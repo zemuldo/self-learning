@@ -1,5 +1,5 @@
-defmodule ApiQueryValWithEctoWeb.Router do
-  use ApiQueryValWithEctoWeb, :router
+defmodule MyAppWeb.Router do
+  use MyAppWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule ApiQueryValWithEctoWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ApiQueryValWithEctoWeb do
+  scope "/", MyAppWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ApiQueryValWithEctoWeb do
+  # scope "/api", MyAppWeb do
   #   pipe_through :api
   # end
 end

@@ -1,4 +1,4 @@
-defmodule ApiQueryValWithEctoWeb.ErrorHelpers do
+defmodule MyAppWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -36,9 +36,9 @@ defmodule ApiQueryValWithEctoWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(ApiQueryValWithEctoWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(MyAppWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(ApiQueryValWithEctoWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(MyAppWeb.Gettext, "errors", msg, opts)
     end
   end
 end

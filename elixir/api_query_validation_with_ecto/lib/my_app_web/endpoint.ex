@@ -1,7 +1,7 @@
-defmodule ApiQueryValWithEctoWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :api_query_val_with_ecto
+defmodule MyAppWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :my_app
 
-  socket "/socket", ApiQueryValWithEctoWeb.UserSocket,
+  socket "/socket", MyAppWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -11,7 +11,7 @@ defmodule ApiQueryValWithEctoWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :api_query_val_with_ecto,
+    from: :my_app,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -39,8 +39,8 @@ defmodule ApiQueryValWithEctoWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_api_query_val_with_ecto_key",
-    signing_salt: "7guwv1xR"
+    key: "_my_app_key",
+    signing_salt: "oD+aeVf+"
 
-  plug ApiQueryValWithEctoWeb.Router
+  plug MyAppWeb.Router
 end
