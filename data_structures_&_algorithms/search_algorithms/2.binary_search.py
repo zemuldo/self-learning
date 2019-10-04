@@ -1,4 +1,4 @@
-def binary_search(a, n, k):
+def binary_search(arr, n, k):
     start_index = 0
     end_index = n-1
 
@@ -10,10 +10,10 @@ def binary_search(a, n, k):
         mid_index = start_index + (end_index - start_index)//2
 
         # k is the current mid index
-        if a[mid_index] == k:
+        if arr[mid_index] == k:
             return 1
         # k is on the right
-        elif a[mid_index] < k:
+        elif arr[mid_index] < k:
             start_index = mid_index + 1
         # k is on the left, 
         else:
