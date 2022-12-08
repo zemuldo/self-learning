@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/zemuldo/optimizing_nodejs#readme",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "winston": "^2.4.2"
   }
 }
